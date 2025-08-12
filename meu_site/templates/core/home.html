@@ -1,0 +1,537 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ site_name }}</title>
+  <meta name="description" content="Conectividade de alta performance com fibra óptica dedicada, suporte especializado e tecnologia de ponta para sua casa ou empresa." />
+  <meta name="theme-color" content="#2563eb" />
+  <meta property="og:title" content="{{ site_name }}" />
+  <meta property="og:description" content="Experimente a verdadeira conexão de fibra óptica com velocidade simétrica e latência ultrabaixa." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
+
+  <link rel="icon" href="{% static 'core/favicon.svg' %}" type="image/svg+xml" />
+  <link rel="stylesheet" href="{% static 'core/style.css' %}" />
+  <link rel="manifest" href="{% static 'core/manifest.webmanifest' %}">
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "{{ site_name }}",
+        "url": "",
+        "email": "{{ email }}",
+        "telephone": "+{{ whatsapp_number }}",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "{{ endereco }}",
+          "addressLocality": "",
+          "addressRegion": "BR",
+          "addressCountry": "BR"
+        }
+      }
+    </script>
+</head>
+<body data-wa="{{ whatsapp_number }}">
+  <header class="site-header" id="topo">
+    <div class="container header-inner">
+      <a class="brand" href="#topo" aria-label="{{ site_name }}">
+        <img src="{% static 'core/logo.svg' %}" class="brand-logo" width="28" height="28" alt="{{ site_name }}" />
+        <span class="brand-name">{{ site_name }}</span>
+      </a>
+      <nav class="main-nav" aria-label="Navegação principal">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
+          <span class="hamburger"></span>
+        </button>
+        <ul id="menu" class="nav-list">
+          <li><a href="#planos" class="nav-link">Planos</a></li>
+          <li><a href="/empresarial/" class="nav-link">Empresarial</a></li>
+          <li><a href="#tecnologia" class="nav-link">Tecnologia</a></li>
+          <li><a href="#sobre" class="nav-link">Sobre</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
+          <li><a href="#contato" class="nav-link">Contato</a></li>
+        </ul>
+    </nav>
+      <a class="cta cta-header" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Quero assinar internet com vocês'|urlencode }}" target="_blank" rel="noopener">
+        <span>Assinar</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+</header>
+
+  <section class="hero" id="hero">
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge"><strong>{{ site_name }}</strong></div>
+        <h1 class="hero-title"><span class="text-gradient">{{ site_name }}</span></h1>
+        <p class="hero-subtitle">Velocidade simétrica, latência ultrabaixa e estabilidade incomparável com nossa rede própria de fibra óptica.</p>
+        <div class="hero-ctas">
+          <a class="cta primary" href="#planos">
+            <span>Ver Planos</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a class="cta ghost" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Quero tirar uma dúvida sobre os planos.'|urlencode }}" target="_blank" rel="noopener">
+            <span>Falar no WhatsApp</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 12C21 16.9706 16.9706 21 12 21C10.4193 21 8.94332 20.5355 7.69422 19.7559L3 21L4.33836 16.4469C3.5238 15.2273 3 13.7712 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-number"><span data-count="99.9">0</span>%</div>
+            <div class="stat-label">Uptime</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number"><span data-count="24">0</span>/7</div>
+            <div class="stat-label">Suporte</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">+<span data-count="5000">0</span></div>
+            <div class="stat-label">Clientes</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="network-animation">
+          <div class="node main"></div>
+          <div class="node secondary"></div>
+          <div class="node tertiary"></div>
+          <div class="connection-line"></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-wave" aria-hidden="true"></div>
+  </section>
+
+  <section id="cobertura" class="section alt">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-subtitle">Nossa área de atuação</span>
+        <h2 class="section-title">Cobertura em <span class="text-gradient">{{ city_name }}</span></h2>
+        <p class="section-description">Atendemos os bairros listados abaixo. Se sua região não estiver na lista, fale com a gente pelo WhatsApp — podemos ter disponibilidade próxima. Itens com * possuem condições especiais.</p>
+      </div>
+
+      <div class="coverage" data-city="{{ city_name }}">
+        <div class="coverage-tools">
+          <input class="coverage-search" type="search" placeholder="Buscar bairro..." aria-label="Buscar bairro" />
+          <span class="coverage-count" aria-live="polite"></span>
+        </div>
+
+        <form class="cep-form" id="cepForm" onsubmit="return false;">
+          <input class="cep-input" id="cepInput" type="text" inputmode="numeric" placeholder="Consultar CEP (somente números)" maxlength="9" aria-label="Consultar CEP" />
+          <button class="cta ghost" id="cepBtn" type="submit">Consultar</button>
+          <small class="cep-hint">Ex.: 76900-000</small>
+        </form>
+        <div class="cep-error" id="cepError" aria-live="polite"></div>
+
+        <ul class="coverage-list" id="coverageList">
+          {% for b in coverage %}
+          <li class="coverage-item{% if b.note %} note{% endif %}" data-name="{{ b.key }}">
+            <span class="name">{{ b.name }}</span>
+            {% if b.note %}<span class="chip" title="Condição especial">Cond. especial</span>{% endif %}
+          </li>
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+</section>
+
+  <section id="planos" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Planos sob medida</span>
+        <h2 class="section-title">Conectividade <span class="text-gradient">Premium</span></h2>
+        <p class="section-description">Escolha o plano ideal para suas necessidades com nossa tecnologia FTTH (Fiber To The Home).</p>
+      </div>
+
+      <div class="pricing-tabs">
+        <button class="tab-button active" data-tab="residencial">Residencial</button>
+        <button class="tab-button" data-tab="empresarial">Empresarial</button>
+      </div>
+
+      <div class="pricing-grid">
+        {% for plano in planos %}
+        <article class="card {% if plano.destaque %}featured{% endif %}" data-reveal>
+          {% if plano.destaque %}<span class="badge">Mais popular</span>{% endif %}
+          <div class="card-header">
+            <h3 class="card-title">{{ plano.nome }}</h3>
+            <div class="speed">{{ plano.velocidade }}</div>
+          </div>
+          <div class="price-container">
+            <span class="price-prefix">A partir de</span>
+            <span class="price">R$ {{ plano.preco }}</span>
+            <span class="price-suffix">/mês</span>
+        </div>
+          {% if plano.descricao %}
+          <p class="card-desc">{{ plano.descricao }}</p>
+          {% endif %}
+          <ul class="card-features">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Conexão 100% fibra óptica
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Wi-Fi de alta performance
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Suporte técnico especializado
+            </li>
+          </ul>
+          <a class="cta block" href="https://wa.me/{{ whatsapp_number }}?text={{ plano.whatsapp_text|urlencode }}" target="_blank" rel="noopener">
+            <span>Assinar agora</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </article>
+        {% empty %}
+        <p class="muted">Nenhum plano cadastrado ainda. Em breve novidades.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section id="tecnologia" class="section alt">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-subtitle">Tecnologia de ponta</span>
+        <h2 class="section-title">Por que nossa <span class="text-gradient">fibra é diferente</span></h2>
+      </div>
+
+      <div class="tech-grid">
+        <div class="tech-card" data-reveal>
+          <div class="tech-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 3V5M18 6L16.5 7.5M21 12H19M18 18L16.5 16.5M12 19V21M7.5 16.5L6 18M5 12H3M7.5 7.5L6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Velocidade simétrica</h3>
+          <p>Upload e download na mesma velocidade, ideal para streaming, videoconferências e backups na nuvem.</p>
+        </div>
+
+        <div class="tech-card" data-reveal>
+          <div class="tech-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z" fill="currentColor"/>
+              <path d="M12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6Z" fill="currentColor"/>
+              <path d="M12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20Z" fill="currentColor"/>
+              <path d="M5 12C5 11.4477 4.55228 11 4 11C3.44772 11 3 11.4477 3 12C3 12.5523 3.44772 13 4 13C4.55228 13 5 12.5523 5 12Z" fill="currentColor"/>
+              <path d="M19 12C19 11.4477 18.5523 11 18 11C17.4477 11 17 11.4477 17 12C17 12.5523 17.4477 13 18 13C18.5523 13 19 12.5523 19 12Z" fill="currentColor"/>
+              <path d="M7.05025 7.05025C7.44077 6.65973 7.44077 6.02656 7.05025 5.63604C6.65973 5.24551 6.02656 5.24551 5.63604 5.63604C5.24551 6.02656 5.24551 6.65973 5.63604 7.05025C6.02656 7.44077 6.65973 7.44077 7.05025 7.05025Z" fill="currentColor"/>
+              <path d="M18.364 18.364C18.7545 17.9734 18.7545 17.3403 18.364 16.9497C17.9734 16.5592 17.3403 16.5592 16.9497 16.9497C16.5592 17.3403 16.5592 17.9734 16.9497 18.364C17.3403 18.7545 17.9734 18.7545 18.364 18.364Z" fill="currentColor"/>
+              <path d="M7.05025 16.9497C7.44077 17.3403 7.44077 17.9734 7.05025 18.364C6.65973 18.7545 6.02656 18.7545 5.63604 18.364C5.24551 17.9734 5.24551 17.3403 5.63604 16.9497C6.02656 16.5592 6.65973 16.5592 7.05025 16.9497Z" fill="currentColor"/>
+              <path d="M18.364 5.63604C18.7545 6.02656 18.7545 6.65973 18.364 7.05025C17.9734 7.44077 17.3403 7.44077 16.9497 7.05025C16.5592 6.65973 16.5592 6.02656 16.9497 5.63604C17.3403 5.24551 17.9734 5.24551 18.364 5.63604Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3>Latência ultrabaixa</h3>
+          <p>Perfeito para jogos online, trading e aplicações em tempo real com resposta imediata.</p>
+        </div>
+
+        <div class="tech-card" data-reveal>
+          <div class="tech-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M19.4 15C19.2669 15.3016 19.1337 15.6031 19.0006 15.9047C18.5294 16.9864 18.0582 18.0681 17.587 19.1498C17.3584 19.6895 16.9474 20.1233 16.4266 20.3681C15.9058 20.6129 15.3128 20.6498 14.7654 20.4716C13.1788 19.9493 11.5921 19.4269 10.0055 18.9046C8.9228 18.5417 8.00001 17.5603 8.00001 16.4258V4.57288C7.9993 4.05784 8.21351 3.56559 8.59151 3.21046C8.96951 2.85533 9.47745 2.66821 9.99999 2.69308C11.5921 2.79308 13.1842 2.89308 14.7763 2.99308C15.3137 3.02582 15.8096 3.26816 16.155 3.66308C16.5004 4.058 16.6637 4.57055 16.6055 5.08277" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Rede própria</h3>
+          <p>Infraestrutura exclusiva garantindo máxima qualidade sem compartilhamento de banda.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre" class="section">
+    <div class="container about-grid">
+      <div class="about-content" data-reveal>
+        <span class="section-subtitle">Nossa história</span>
+        <h2 class="section-title">Conectando pessoas com <span class="text-gradient">excelência</span></h2>
+        <p>Fundada por especialistas em telecomunicações, a {{ site_name }} nasceu da necessidade de oferecer uma conexão de internet verdadeiramente premium, onde tecnologia e atendimento humano andam juntos.</p>
+        
+        <div class="mission-vision">
+          <div>
+            <h4>Missão</h4>
+            <p>Fornecer conectividade de alta performance com infraestrutura de ponta e suporte excepcional.</p>
+          </div>
+          <div>
+            <h4>Visão</h4>
+            <p>Ser referência em qualidade e inovação no setor de telecomunicações no Brasil.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="about-image" data-reveal>
+        <div class="image-wrapper">
+          <div class="floating-element"></div>
+          <div class="floating-element secondary"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="section alt">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-subtitle">Tire suas dúvidas</span>
+        <h2 class="section-title">Perguntas <span class="text-gradient">frequentes</span></h2>
+      </div>
+
+      <div class="accordion" data-accordion>
+        <div class="item">
+          <button class="q" aria-expanded="false">
+            <span>Qual a diferença da fibra óptica para outras tecnologias?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="a">
+            <p>A fibra óptica utiliza pulsos de luz para transmitir dados, oferecendo velocidades muito superiores, latência extremamente baixa e imunidade a interferências eletromagnéticas, diferentemente de tecnologias como ADSL ou cabo coaxial.</p>
+          </div>
+        </div>
+        
+        <div class="item">
+          <button class="q" aria-expanded="false">
+            <span>Como é feita a instalação do serviço?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="a">
+            <p>Nossos técnicos especializados realizam a instalação com equipamentos de última geração, passando o cabo de fibra óptica até seu imóvel e instalando o ONU (Optical Network Unit) que converte o sinal óptico para elétrico.</p>
+          </div>
+        </div>
+        
+        <div class="item">
+          <button class="q" aria-expanded="false">
+            <span>Posso usar meu próprio roteador?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="a">
+            <p>Sim, porém recomendamos utilizar nossos equipamentos que são especialmente configurados para extrair o máximo desempenho da nossa rede e contam com suporte técnico completo.</p>
+          </div>
+        </div>
+        
+        <div class="item">
+          <button class="q" aria-expanded="false">
+            <span>O que acontece em caso de falhas?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="a">
+            <p>Nossa equipe de plantão 24/7 é acionada imediatamente para resolver qualquer problema, com tempo médio de resposta inferior a 2 horas em nossa área de cobertura.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" class="section">
+    <div class="container contact-grid">
+      <div class="contact-info" data-reveal>
+        <span class="section-subtitle">Fale conosco</span>
+        <h2 class="section-title">Pronto para <span class="text-gradient">conectar</span></h2>
+        <p>Nossa equipe está pronta para te atender e oferecer a melhor solução em conectividade para suas necessidades.</p>
+        
+        <div class="contact-methods">
+          <a href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Vim pelo site e quero atendimento.'|urlencode }}" class="contact-method" target="_blank" rel="noopener">
+            <div class="method-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 12C21 16.9706 16.9706 21 12 21C10.4193 21 8.94332 20.5355 7.69422 19.7559L3 21L4.33836 16.4469C3.5238 15.2273 3 13.7712 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="method-content">
+              <span class="method-label">WhatsApp</span>
+              <span class="method-value">{{ whatsapp_number_formatted }}</span>
+            </div>
+          </a>
+          
+          <a href="mailto:{{ email }}" class="contact-method">
+            <div class="method-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M22 6L12 13L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="method-content">
+              <span class="method-label">E-mail</span>
+              <span class="method-value">{{ email }}</span>
+            </div>
+          </a>
+          
+          <div class="contact-method">
+            <div class="method-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 11C13.6569 11 15 9.65685 15 8C15 6.34315 13.6569 5 12 5C10.3431 5 9 6.34315 9 8C9 9.65685 10.3431 11 12 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="method-content">
+              <span class="method-label">Endereço</span>
+              <span class="method-value">{{ endereco }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contact-form-wrapper" data-reveal>
+        <form class="contact-form" onsubmit="return false;">
+          <div class="form-group">
+            <label for="name">Nome completo</label>
+            <input type="text" id="name" placeholder="Seu nome" required />
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" placeholder="seu@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Telefone</label>
+              <input type="tel" id="phone" placeholder="(00) 00000-0000" required />
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="subject">Assunto</label>
+            <select id="subject" required>
+              <option value="" disabled selected>Selecione um assunto</option>
+              <option value="planos">Consultar planos</option>
+              <option value="suporte">Suporte técnico</option>
+              <option value="empresarial">Soluções empresariais</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Mensagem</label>
+            <textarea id="message" rows="4" placeholder="Como podemos te ajudar?" required></textarea>
+          </div>
+          
+          <button class="cta primary block" type="submit">
+            <span>Enviar mensagem</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22 2L11 13M22 2L15 22L11 13M11 13L2 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+</section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#topo" class="brand" aria-label="{{ site_name }}">
+            <img src="{% static 'core/logo.svg' %}" class="brand-logo" width="28" height="28" alt="{{ site_name }}" />
+            <span class="brand-name">{{ site_name }}</span>
+          </a>
+          <p>Tecnologia e atendimento humano para conectar seu mundo.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17 2H7C4.23858 2 2 4.23858 2 7V17C2 19.7614 4.23858 22 7 22H17C19.7614 22 22 19.7614 22 17V7C22 4.23858 19.7614 2 17 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M16 11.37C16.1234 12.2022 15.9813 13.0522 15.5938 13.799C15.2063 14.5458 14.5931 15.1514 13.8416 15.5297C13.0901 15.9079 12.2384 16.0396 11.4078 15.9059C10.5772 15.7723 9.80976 15.3801 9.21484 14.7852C8.61992 14.1902 8.22773 13.4228 8.09406 12.5922C7.9604 11.7616 8.09206 10.9099 8.47032 10.1584C8.84858 9.40685 9.45419 8.79374 10.201 8.40624C10.9478 8.01873 11.7978 7.87658 12.63 8C13.4789 8.12588 14.2648 8.52146 14.8717 9.1283C15.4785 9.73515 15.8741 10.5211 16 11.37Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M17.5 6.5H17.51" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 2H15C13.6739 2 12.4021 2.52678 11.4645 3.46447C10.5268 4.40215 10 5.67392 10 7V10H7V14H10V22H14V14H17L18 10H14V7C14 6.73478 14.1054 6.48043 14.2929 6.29289C14.4804 6.10536 14.7348 6 15 6H18V2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 8C17.5913 8 19.1174 8.63214 20.2426 9.75736C21.3679 10.8826 22 12.4087 22 14V21H18V14C18 13.4696 17.7893 12.9609 17.4142 12.5858C17.0391 12.2107 16.5304 12 16 12C15.4696 12 14.9609 12.2107 14.5858 12.5858C14.2107 12.9609 14 13.4696 14 14V21H10V14C10 12.4087 10.6321 10.8826 11.7574 9.75736C12.8826 8.63214 14.4087 8 16 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6 9H2V21H6V9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4 6C5.10457 6 6 5.10457 6 4C6 2.89543 5.10457 2 4 2C2.89543 2 2 2.89543 2 4C2 5.10457 2.89543 6 4 6Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Links rápidos</h4>
+          <ul>
+            <li><a href="#planos">Planos</a></li>
+            <li><a href="#tecnologia">Tecnologia</a></li>
+            <li><a href="#sobre">Sobre nós</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Termos de uso</a></li>
+            <li><a href="#">Política de privacidade</a></li>
+            <li><a href="#">Contrato de adesão</a></li>
+            <li><a href="#">Regulamentos</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-newsletter">
+          <h4>Newsletter</h4>
+          <p>Assine para receber novidades e ofertas exclusivas.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Seu melhor e-mail" required />
+            <button type="submit" aria-label="Assinar newsletter">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 2L11 13M22 2L15 22L11 13M11 13L2 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2025 {{ site_name }}. Todos os direitos reservados.</p>
+        <div class="footer-actions">
+          <button class="toggle-theme" aria-pressed="false" aria-label="Alternar tema">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 3V5M18 6L16.5 7.5M21 12H19M18 18L16.5 16.5M12 19V21M7.5 16.5L6 18M5 12H3M7.5 7.5L6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <a href="#topo" class="back-to-top">
+            <span>Voltar ao topo</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 15L12 8L19 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+</footer>
+
+  <a class="floating-whatsapp" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Vim pelo site e quero atendimento.'|urlencode }}" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20.52 3.48A11.91 11.91 0 0012 0C5.4 0 0 5.37 0 12a11.9 11.9 0 001.62 6.06L0 24l6.12-1.59A11.9 11.9 0 0012 24c6.6 0 12-5.37 12-12 0-3.18-1.26-6.18-3.48-8.52zM12 22a9.93 9.93 0 01-5.07-1.41l-.36-.21-3.6.93.96-3.51-.24-.39A10.06 10.06 0 012 12C2 6.48 6.48 2 12 2s10 4.48 10 10-4.48 10-10 10zm5.7-7.47c-.3-.15-1.77-.9-2.04-1-.27-.09-.48-.15-.69.15-.21.3-.78 1-.96 1.2-.18.18-.36.21-.66.06-.3-.15-1.26-.45-2.4-1.47-.9-.81-1.5-1.8-1.68-2.1-.18-.3 0-.45.12-.6.12-.12.3-.33.45-.51.15-.18.21-.3.3-.51.09-.21.03-.39-.03-.54-.06-.15-.69-1.65-.93-2.25-.24-.57-.48-.48-.69-.48h-.57c-.21 0-.54.09-.81.39-.27.3-1.05 1.02-1.05 2.49s1.08 2.88 1.23 3.09c.15.21 2.13 3.24 5.16 4.5.72.3 1.29.48 1.73.63.72.24 1.38.21 1.89.12.57-.09 1.77-.72 2.01-1.41.24-.69.24-1.29.18-1.41-.06-.12-.24-.18-.54-.33z" fill="currentColor"/></svg>
+  </a>
+
+  <script src="{% static 'core/main.js' %}" defer></script>
+</body>
+</html>

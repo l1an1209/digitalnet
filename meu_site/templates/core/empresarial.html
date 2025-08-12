@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ site_name }} — Empresarial</title>
+  <link rel="icon" href="{% static 'core/favicon.svg' %}" type="image/svg+xml" />
+  <link rel="stylesheet" href="{% static 'core/style.css' %}" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label="{{ site_name }}">
+        <img src="{% static 'core/logo.svg' %}" class="brand-logo" width="28" height="28" alt="{{ site_name }}" />
+        <span class="brand-name">{{ site_name }}</span>
+      </a>
+      <nav class="main-nav"><ul class="nav-list"><li><a href="/" class="nav-link">Início</a></li></ul></nav>
+      <a class="cta cta-header" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Quero uma proposta empresarial'|urlencode }}" target="_blank" rel="noopener">Falar no WhatsApp</a>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container section-header center">
+      <span class="section-subtitle">Empresarial</span>
+      <h1 class="section-title">Conectividade <span class="text-gradient">para empresas</span></h1>
+      <p class="section-description">Links dedicados, SLA, IP fixo, redes corporativas, Wi‑Fi gerenciado e atendimento prioritário.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contact-grid">
+      <div>
+        <h2 class="section-title">Solicite uma proposta</h2>
+        {% if request.GET.ok %}
+          <p class="muted">Recebemos seu pedido. Nossa equipe entrará em contato.</p>
+        {% endif %}
+        <form class="contact-form" method="post">
+          {% csrf_token %}
+          <div class="form-group">
+            <label>Empresa
+              <input type="text" name="company_name" placeholder="Nome da empresa" required />
+            </label>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>CNPJ
+                <input type="text" name="cnpj" placeholder="00.000.000/0000-00" required />
+              </label>
+            </div>
+            <div class="form-group">
+              <label>Contato
+                <input type="text" name="contact_name" placeholder="Seu nome" required />
+              </label>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>E-mail
+                <input type="email" name="email" placeholder="contato@empresa.com" />
+              </label>
+            </div>
+            <div class="form-group">
+              <label>Telefone
+                <input type="tel" name="phone" placeholder="(00) 00000-0000" required />
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Mensagem
+              <textarea name="message" rows="4" placeholder="Conte sua necessidade"></textarea>
+            </label>
+          </div>
+          <button class="cta primary" type="submit">Enviar</button>
+        </form>
+      </div>
+      <div class="tech-card" data-reveal>
+        <div class="tech-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 7H21M5 7V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 7V5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>O que oferecemos</h3>
+        <ul class="card-features">
+          <li>Link dedicado com SLA</li>
+          <li>IP fixo e VLAN</li>
+          <li>Monitoramento proativo</li>
+          <li>Suporte prioritário</li>
+        </ul>
+        <a class="cta ghost" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Quero uma proposta empresarial'|urlencode }}" target="_blank" rel="noopener">Falar no WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <p>© 2025 {{ site_name }}. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+  <script src="{% static 'core/main.js' %}" defer></script>
+</body>
+</html>
+
+
