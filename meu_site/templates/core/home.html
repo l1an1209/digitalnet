@@ -1,0 +1,141 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ site_name }}</title>
+  <meta name="description" content="Conectividade de alta performance com fibra óptica dedicada, suporte especializado e tecnologia de ponta para sua casa ou empresa." />
+  <meta name="theme-color" content="#2563eb" />
+  <meta property="og:title" content="{{ site_name }}" />
+  <meta property="og:description" content="Experimente a verdadeira conexão de fibra óptica com velocidade simétrica e latência ultrabaixa." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
+
+  <link rel="icon" href="{% static 'core/favicon.svg' %}" type="image/svg+xml" />
+  <link rel="stylesheet" href="{% static 'core/style.css' %}" />
+  <link rel="manifest" href="{% static 'core/manifest.webmanifest' %}">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "{{ site_name }}",
+    "url": "{{ request.build_absolute_uri }}",
+    "email": "digitalnet@gmail.com",
+    "telephone": "+5569993735169",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua Matogrocense, N: 247",
+      "addressLocality": "Urupá",
+      "addressRegion": "RO",
+      "addressCountry": "BR"
+    }
+  }
+  </script>
+</head>
+<body data-wa="69993735169">
+  <header class="site-header" id="topo">
+    <div class="container header-inner">
+      <a class="brand" href="#topo" aria-label="{{ site_name }}">
+        <img src="{% static 'core/logo.svg' %}" class="brand-logo" width="28" height="28" alt="{{ site_name }}" />
+        <span class="brand-name">{{ site_name }}</span>
+      </a>
+      <nav class="main-nav" aria-label="Navegação principal">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
+          <span class="hamburger"></span>
+        </button>
+        <ul id="menu" class="nav-list">
+          <li><a href="#planos" class="nav-link">Planos</a></li>
+          <li><a href="/empresarial/" class="nav-link">Empresarial</a></li>
+          <li><a href="#tecnologia" class="nav-link">Tecnologia</a></li>
+          <li><a href="#sobre" class="nav-link">Sobre</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
+          <li><a href="#contato" class="nav-link">Contato</a></li>
+        </ul>
+      </nav>
+      <a class="cta cta-header" href="https://wa.me/5569993735169?text={{ 'Quero assinar internet com vocês'|urlencode }}" target="_blank" rel="noopener">
+        <span>Assinar</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge"><strong>{{ site_name }}</strong></div>
+        <h1 class="hero-title"><span class="text-gradient">{{ site_name }}</span></h1>
+        <p class="hero-subtitle">Velocidade simétrica, latência ultrabaixa e estabilidade incomparável com nossa rede própria de fibra óptica.</p>
+        <div class="hero-ctas">
+          <a class="cta primary" href="#planos"><span>Ver Planos</span></a>
+          <a class="cta ghost" href="https://wa.me/5569993735169?text={{ 'Olá! Quero tirar uma dúvida sobre os planos.'|urlencode }}" target="_blank" rel="noopener"><span>Falar no WhatsApp</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cobertura Section -->
+  <section id="cobertura" class="section alt">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-subtitle">Nossa área de atuação</span>
+        <h2 class="section-title">Cobertura em <span class="text-gradient">Urupá</span></h2>
+        <p>Atendemos os bairros listados abaixo. Se sua região não estiver na lista, fale com a gente pelo WhatsApp.</p>
+      </div>
+      <ul class="coverage-list">
+        {% for b in coverage %}
+        <li>{{ b.name }}{% if b.note %} (Condição especial){% endif %}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Planos Section -->
+  <section id="planos" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Planos sob medida</span>
+        <h2 class="section-title">Conectividade <span class="text-gradient">Premium</span></h2>
+      </div>
+      <div class="pricing-grid">
+        {% for plano in planos %}
+        <article class="card {% if plano.destaque %}featured{% endif %}">
+          {% if plano.destaque %}<span class="badge">Mais popular</span>{% endif %}
+          <h3>{{ plano.nome }}</h3>
+          <div class="speed">{{ plano.velocidade }}</div>
+          <div class="price">R$ {{ plano.preco }} / mês</div>
+          <p>{{ plano.descricao }}</p>
+          <a class="cta block" href="https://wa.me/5569993735169?text={{ plano.whatsapp_text|urlencode }}" target="_blank" rel="noopener">Assinar agora</a>
+        </article>
+        {% empty %}
+        <p>Nenhum plano cadastrado ainda.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato Section -->
+  <section id="contato" class="section">
+    <div class="container contact-grid">
+      <div class="contact-info">
+        <h2>Fale conosco</h2>
+        <p>Nossa equipe está pronta para te atender.</p>
+        <a href="https://wa.me/5569993735169?text={{ 'Olá! Vim pelo site e quero atendimento.'|urlencode }}">WhatsApp: 69 99373-5169</a>
+        <a href="mailto:digitalnet@gmail.com">Email: digitalnet@gmail.com</a>
+        <p>Endereço: Rua Matogrocense, N: 247, bairro Urupá</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 {{ site_name }}. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "Digital Net",
+  "short_name": "DigitalNet",
+  "description": "Internet Fibra Óptica Premium em Ji-Paraná",
+  "start_url": "/",
+  "display": "standalone",
+  "lang": "pt-BR",
+  "background_color": "#0b1220",
+  "theme_color": "#2563eb",
+  "icons": [
+    { "src": "/static/core/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
+
+
