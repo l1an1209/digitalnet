@@ -12,9 +12,13 @@
   <meta property="og:description" content="Experimente a verdadeira conexão de fibra óptica com velocidade simétrica e latência ultrabaixa." />
   <meta property="og:type" content="website" />
 
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
 
   <link rel="icon" href="{% static 'core/favicon.svg' %}" type="image/svg+xml" />
   <link rel="stylesheet" href="{% static 'core/style.css' %}" />
@@ -39,10 +43,12 @@
   </script>
 </head>
 <body data-wa="69993735169">
+
+  <!-- HEADER -->
   <header class="site-header" id="topo">
     <div class="container header-inner">
       <a class="brand" href="#topo" aria-label="{{ site_name }}">
-        <img src="{% static 'core/logo.svg' %}" class="brand-logo" width="28" height="28" alt="{{ site_name }}" />
+        <img src="{% static 'core/logo.svg' %}" class="brand-logo" width="32" height="32" alt="{{ site_name }}" />
         <span class="brand-name">{{ site_name }}</span>
       </a>
       <nav class="main-nav" aria-label="Navegação principal">
@@ -52,55 +58,102 @@
         <ul id="menu" class="nav-list">
           <li><a href="#planos" class="nav-link">Planos</a></li>
           <li><a href="/empresarial/" class="nav-link">Empresarial</a></li>
-          <li><a href="#tecnologia" class="nav-link">Tecnologia</a></li>
+          <li><a href="https://www.tecmundo.com.br/" class="nav-link">Tecnologia</a></li>
           <li><a href="#sobre" class="nav-link">Sobre</a></li>
           <li><a href="#faq" class="nav-link">FAQ</a></li>
           <li><a href="#contato" class="nav-link">Contato</a></li>
         </ul>
       </nav>
       <a class="cta cta-header" href="https://wa.me/5569993735169?text={{ 'Quero assinar internet com vocês'|urlencode }}" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i>
         <span>Assinar</span>
       </a>
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- HERO SECTION -->
   <section class="hero" id="hero">
+    <div class="hero-background">
+      <div class="hero-pattern"></div>
+    </div>
     <div class="container hero-inner">
       <div class="hero-content">
-        <div class="hero-badge"><strong>{{ site_name }}</strong></div>
-        <h1 class="hero-title"><span class="text-gradient">{{ site_name }}</span></h1>
+        <div class="hero-badge"><i class="fas fa-bolt"></i> Internet de Alta Performance</div>
+        <h1 class="hero-title">Conectividade <span class="text-gradient">Premium</span> com Fibra Óptica</h1>
         <p class="hero-subtitle">Velocidade simétrica, latência ultrabaixa e estabilidade incomparável com nossa rede própria de fibra óptica.</p>
         <div class="hero-ctas">
-          <a class="cta primary" href="#planos"><span>Ver Planos</span></a>
-          <a class="cta ghost" href="https://wa.me/5569993735169?text={{ 'Olá! Quero tirar uma dúvida sobre os planos.'|urlencode }}" target="_blank" rel="noopener"><span>Falar no WhatsApp</span></a>
+          <a class="cta primary" href="#planos">
+            <i class="fas fa-rocket"></i>
+            <span>Ver Planos</span>
+          </a>
+          <a class="cta secondary" href="https://wa.me/5569993735169?text={{ 'Olá! Quero tirar uma dúvida sobre os planos.'|urlencode }}" target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i>
+            <span>Falar no WhatsApp</span>
+          </a>
+        </div>
+        <div class="hero-features">
+          <div class="feature">
+            <i class="fas fa-wifi"></i>
+            <span>Wi-Fi Grátis</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-headset"></i>
+            <span>Suporte 24/7</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-bolt"></i>
+            <span>Instalação Rápida</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="visual-container">
+         
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Cobertura Section -->
-  <section id="cobertura" class="section alt">
+  <!-- VANTAGENS SECTION -->
+  <section class="vantagens section">
     <div class="container">
       <div class="section-header center">
-        <span class="section-subtitle">Nossa área de atuação</span>
-        <h2 class="section-title">Cobertura em <span class="text-gradient">Ji-Paraná</span></h2>
-        <p>Atendemos os bairros listados abaixo. Se sua região não estiver na lista, fale com a gente pelo WhatsApp.</p>
+        <span class="section-subtitle">Por que nos escolher</span>
+        <h2 class="section-title">Vantagens <span class="text-gradient">Exclusivas</span></h2>
       </div>
-      <ul class="coverage-list">
-        {% for b in coverage %}
-        <li>{{ b.name }}{% if b.note %} (Condição especial){% endif %}</li>
-        {% endfor %}
-      </ul>
+      <div class="vantagens-grid">
+        <div class="vantagem-card">
+          <div class="vantagem-icon">
+            <i class="fas fa-tachometer-alt"></i>
+          </div>
+          <h3>Velocidade Simétrica</h3>
+          <p>Download e upload na mesma velocidade para melhor experiência em chamadas, jogos e transmissões.</p>
+        </div>
+        <div class="vantagem-card">
+          <div class="vantagem-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Conectividade Segura</h3>
+          <p>Proteção avançada contra ameaças virtuais para garantir sua segurança online.</p>
+        </div>
+        <div class="vantagem-card">
+          <div class="vantagem-icon">
+            <i class="fas fa-sliders-h"></i>
+          </div>
+          <h3>Estabilidade Garantida</h3>
+          <p>99,9% de disponibilidade com monitoramento 24/7 para garantir sua conexão sempre ativa.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Planos Section -->
-  <section id="planos" class="section">
+  <!-- PLANOS SECTION -->
+  <section id="planos" class="section alt">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header center">
         <span class="section-subtitle">Planos sob medida</span>
         <h2 class="section-title">Conectividade <span class="text-gradient">Premium</span></h2>
+        <p>Escolha o plano ideal para sua necessidade</p>
       </div>
       <div class="pricing-grid">
         {% for plano in planos %}
@@ -108,9 +161,17 @@
           {% if plano.destaque %}<span class="badge">Mais popular</span>{% endif %}
           <h3>{{ plano.nome }}</h3>
           <div class="speed">{{ plano.velocidade }}</div>
-          <div class="price">R$ {{ plano.preco }} / mês</div>
-          <p>{{ plano.descricao }}</p>
-          <a class="cta block" href="https://wa.me/5569993735169?text={{ plano.whatsapp_text|urlencode }}" target="_blank" rel="noopener">Assinar agora</a>
+          <div class="price">R$ {{ plano.preco }} <span>/mês</span></div>
+          <ul class="benefits-list">
+            <li><i class="fas fa-check"></i> Wi-Fi Grátis</li>
+            <li><i class="fas fa-check"></i> Instalação Inclusa</li>
+            <li><i class="fas fa-check"></i> Suporte 24/7</li>
+            <li><i class="fas fa-check"></i> Equipamento Moderno</li>
+          </ul>
+          <a class="cta block" href="https://wa.me/5569993735169?text={{ plano.whatsapp_text|urlencode }}" target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i>
+            Assinar agora
+          </a>
         </article>
         {% empty %}
         <p>Nenhum plano cadastrado ainda.</p>
@@ -119,23 +180,203 @@
     </div>
   </section>
 
-  <!-- Contato Section -->
-  <section id="contato" class="section">
-    <div class="container contact-grid">
-      <div class="contact-info">
-        <h2>Fale conosco</h2>
-        <p>Nossa equipe está pronta para te atender.</p>
-        <a href="https://wa.me/5569993735169?text={{ 'Olá! Vim pelo site e quero atendimento.'|urlencode }}">WhatsApp: 69 99373-5169</a>
-        <a href="mailto:digitalnet@gmail.com">Email: digitalnet@gmail.com</a>
-        <p>Endereço: Rua Matogrocense, N: 247, bairro Urupá</p>
+  <!-- COBERTURA SECTION -->
+  <section id="cobertura" class="section">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-subtitle">Nossa área de atuação</span>
+        <h2 class="section-title">Cobertura em <span class="text-gradient">Ji-Paraná</span></h2>
+        <p>Atendemos os bairros listados abaixo. Se sua região não estiver na lista, fale com a gente pelo WhatsApp.</p>
+      </div>
+
+      <div class="coverage-grid">
+        {% for b in coverage %}
+        <div class="coverage-card {% if b.note %}special{% endif %}">
+          <span class="coverage-icon"><i class="fas fa-map-marker-alt"></i></span>
+          <span class="coverage-name">{{ b.name }}</span>
+          {% if b.note %}<span class="coverage-note">{{ b.note }}</span>{% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      
+      <div class="coverage-cta">
+        <p>Não encontrou seu bairro? Entre em contato para verificar a disponibilidade!</p>
+        <a href="https://wa.me/5569993735169?text={{ 'Gostaria de saber se atendem no meu bairro'|urlencode }}" class="cta primary">
+          <i class="fab fa-whatsapp"></i>
+          Consultar Cobertura
+        </a>
       </div>
     </div>
   </section>
 
-  <footer class="site-footer">
+  <!-- SOBRE SECTION -->
+  <section id="sobre" class="section alt">
+    <div class="container about-grid">
+      <div class="about-content">
+        <span class="section-subtitle">Nossa história</span>
+        <h2 class="section-title">Sobre a <span class="text-gradient">{{ site_name }}</span></h2>
+        <p>Somos uma empresa especializada em fornecer internet de alta velocidade através de fibra óptica, com foco em qualidade e atendimento personalizado.</p>
+        <p>Nossa missão é conectar pessoas e negócios com tecnologia de ponta, oferecendo estabilidade e suporte técnico especializado.</p>
+        <div class="about-features">
+          <div class="about-feature">
+            <i class="fas fa-medal"></i>
+            <div>
+              <h4>Qualidade Garantida</h4>
+              <p>Infraestrutura própria e monitorada 24h</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <i class="fas fa-users"></i>
+            <div>
+              <h4>Atendimento Humanizado</h4>
+              <p>Equipe especializada para te atender</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="visual-wrapper">
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section id="faq" class="section">
     <div class="container">
-      <p>© 2025 {{ site_name }}. Todos os direitos reservados.</p>
+      <div class="section-header center">
+        <span class="section-subtitle">Tire suas dúvidas</span>
+        <h2 class="section-title">Perguntas <span class="text-gradient">Frequentes</span></h2>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Como é feita a instalação?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Nossa instalação é realizada por técnicos especializados que avaliam o melhor local para passagem do cabo e posicionamento do equipamento para garantir o melhor sinal possível.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Qual o prazo de instalação?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>O prazo médio é de 1 a 3 dias úteis após a confirmação do pagamento da primeira mensalidade. Em algumas áreas, pode ser realizado até no mesmo dia.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Preciso de furação na parede?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Sim, mas nossa equipe utiliza técnicas que minimizam o impacto e realizam a limpeza do local após a instalação.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Como funciona o suporte técnico?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Oferecemos suporte por WhatsApp, telefone e email, com atendimento 24 horas para emergências e 8h às 18h para demais solicitações.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO SECTION -->
+  <section id="contato" class="section alt">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-subtitle">Fale conosco</span>
+        <h2 class="section-title">Entre em <span class="text-gradient">Contato</span></h2>
+        <p>Nossa equipe está pronta para te atender</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fab fa-whatsapp"></i>
+            </div>
+            <h3>WhatsApp</h3>
+            <p>Atendimento rápido e direto</p>
+            <a href="https://wa.me/5569993735169?text={{ 'Olá! Vim pelo site e quero atendimento.'|urlencode }}" class="contact-link">69 99373-5169</a>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <h3>Email</h3>
+            <p>Respondemos em até 24h</p>
+            <a href="mailto:digitalnet@gmail.com" class="contact-link">digitalnet396@gmail.com</a>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h3>Endereço</h3>
+            <p>Venha nos visitar</p>
+            <span class="contact-address">Rua Matogrossense, N: 247, Bairro Urupá</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a class="brand" href="#topo" aria-label="{{ site_name }}">
+            <img src="{% static 'core/logo.svg' %}" class="brand-logo" width="32" height="32" alt="{{ site_name }}" />
+            <span class="brand-name">{{ site_name }}</span>
+          </a>
+          <p>Conectando você com o mundo através da melhor tecnologia em fibra óptica.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Links Rápidos</h4>
+            <ul>
+              <li><a href="#planos">Planos</a></li>
+              <li><a href="#cobertura">Cobertura</a></li>
+              <li><a href="#sobre">Sobre</a></li>
+              <li><a href="#faq">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Suporte</h4>
+            <ul>
+              <li><a href="https://wa.me/5569993735169">WhatsApp</a></li>
+              <li><a href="mailto:digitalnet@gmail.com">Email</a></li>
+              <li><a href="#contato">Contato</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 {{ site_name }}. Todos os direitos reservados.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/5569993735169"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
     </div>
   </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/5569993735169" class="floating-whatsapp" target="_blank" rel="noopener">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script src="{% static 'core/scripts.js' %}"></script>
+
 </body>
 </html>
