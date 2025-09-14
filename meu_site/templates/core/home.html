@@ -149,36 +149,55 @@
 
   <!-- PLANOS SECTION -->
   <section id="planos" class="section alt">
-    <div class="container">
-      <div class="section-header center">
-        <span class="section-subtitle">Planos sob medida</span>
-        <h2 class="section-title">Conectividade <span class="text-gradient">Premium</span></h2>
-        <p>Escolha o plano ideal para sua necessidade</p>
-      </div>
-      <div class="pricing-grid">
-        {% for plano in planos %}
-        <article class="card {% if plano.destaque %}featured{% endif %}">
-          {% if plano.destaque %}<span class="badge">Mais popular</span>{% endif %}
-          <h3>{{ plano.nome }}</h3>
-          <div class="speed">{{ plano.velocidade }}</div>
-          <div class="price">R$ {{ plano.preco }} <span>/mês</span></div>
-          <ul class="benefits-list">
-            <li><i class="fas fa-check"></i> Wi-Fi Grátis</li>
-            <li><i class="fas fa-check"></i> Instalação Inclusa</li>
-            <li><i class="fas fa-check"></i> Suporte 24/7</li>
-            <li><i class="fas fa-check"></i> Equipamento Moderno</li>
-          </ul>
-          <a class="cta block" href="https://wa.me/5569993735169?text={{ plano.whatsapp_text|urlencode }}" target="_blank" rel="noopener">
-            <i class="fab fa-whatsapp"></i>
-            Assinar agora
-          </a>
-        </article>
-        {% empty %}
-        <p>Nenhum plano cadastrado ainda.</p>
-        {% endfor %}
-      </div>
+  <div class="container">
+    <div class="section-header center">
+      <span class="section-subtitle">Planos sob medida</span>
+      <h2 class="section-title">Conectividade <span class="text-gradient">Premium</span></h2>
+      <p>Escolha o plano ideal para sua necessidade</p>
     </div>
-  </section>
+
+    <div class="pricing-grid">
+      {% for plano in planos %}
+      <article class="card pricing-card {% if plano.destaque %}featured{% endif %}">
+        {% if plano.destaque %}<span class="badge">Mais popular</span>{% endif %}
+
+        <h3 class="plan-name">{{ plano.nome }}</h3>
+        
+        <!-- Velocidade grande e chamativa -->
+        <div class="plan-speed">
+          <span class="speed-number">{{ plano.velocidade }}</span>
+          <span class="speed-label">Mbps</span>
+        </div>
+
+        <!-- Descrição -->
+        <p class="plan-description">{{ plano.descricao }}</p>
+
+        <!-- Preço destacado -->
+        <div class="plan-price">
+          <span class="currency">R$</span>
+          <span class="price-number">{{ plano.preco }}</span>
+          <span class="per-month">/mês</span>
+        </div>
+
+        <ul class="benefits-list">
+          <li><i class="fas fa-check"></i> Wi-Fi Grátis</li>
+          <li><i class="fas fa-check"></i> Instalação Inclusa</li>
+          <li><i class="fas fa-check"></i> Suporte 24/7</li>
+          <li><i class="fas fa-check"></i> Equipamento Moderno</li>
+        </ul>
+
+        <a class="cta block" href="https://wa.me/5569993735169?text={{ plano.whatsapp_text|urlencode }}" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i>
+          Assinar agora
+        </a>
+      </article>
+      {% empty %}
+      <p>Nenhum plano cadastrado ainda.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
 
   <!-- COBERTURA SECTION -->
   <section id="cobertura" class="section">

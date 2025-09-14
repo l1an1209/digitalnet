@@ -497,131 +497,163 @@ p {
 /* =========================
    PLANOS / CARDS
 ========================= */
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2.5rem;
-  margin-top: 2rem;
-}
-
-.card {
-  background: white;
-  border-radius: var(--border-radius);
-  padding: 3rem 2.5rem;
+/* Cards de preços */
+.pricing-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
   text-align: center;
-  box-shadow: var(--shadow-card);
-  transition: var(--transition);
-  border: 1px solid var(--gray-light);
-  position: relative;
-  display: flex;
-  flex-direction: column;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card:hover {
+.pricing-card:hover {
   transform: translateY(-8px);
-  box-shadow: var(--shadow-hover);
-  border-color: var(--primary-light);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.15);
 }
 
-.card.featured {
-  border: 2px solid var(--primary);
-  transform: scale(1.03);
-}
-
-.card.featured:hover {
-  transform: scale(1.03) translateY(-8px);
-}
-
-.card .badge {
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  color: white;
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 0.5rem 1.5rem;
-  border-radius: 50px;
-  box-shadow: var(--shadow);
-  white-space: nowrap;
-}
-
-.card h3 {
-  font-size: 1.5rem;
+/* Nome do plano */
+.plan-name {
+  font-size: 1.4rem;
+  font-weight: 700;
   margin-bottom: 1rem;
-  color: var(--dark);
+  color: #1e293b;
 }
 
-.card .speed {
-  font-size: 2.5rem;
+/* Velocidade gigante */
+.plan-speed {
+  margin: 1rem 0;
+}
+
+.speed-number {
+  font-size: 3rem;
   font-weight: 800;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 0.5rem;
+  color: var(--primary);
   line-height: 1;
 }
 
-.card .price {
-  font-size: 1.75rem;
+.speed-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #64748b;
+  margin-left: 4px;
+}
+
+/* Preço destacado */
+.plan-price {
+  margin: 1.5rem 0;
   font-weight: 700;
-  color: var(--dark);
-  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 4px;
 }
 
-.card .price span {
+.plan-price .currency {
   font-size: 1rem;
-  font-weight: 500;
-  color: var(--gray);
+  color: #475569;
 }
 
-.card p {
+.plan-price .price-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #16a34a;
+}
+
+.plan-price .per-month {
   font-size: 1rem;
-  color: var(--gray);
-  margin-bottom: 2rem;
+  color: #64748b;
 }
 
+/* Descrição */
+.plan-description {
+  font-size: 0.95rem;
+  color: #475569;
+  margin: 0.5rem 0 1rem;
+  min-height: 40px; /* evita cards desalinhados */
+}
+
+/* Lista de benefícios */
 .benefits-list {
-  list-style: none;
-  margin-bottom: 2.5rem;
   text-align: left;
+  margin: 1rem 0;
+  padding-left: 0;
+  list-style: none;
 }
 
 .benefits-list li {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
-  color: var(--gray);
-  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  color: #1e293b;
 }
 
 .benefits-list i {
-  color: var(--success);
+  color: #16a34a;
+  margin-right: 8px;
+}
+/* Título do plano */
+.card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.8rem;
+}
+
+/* Velocidade (número grande e chamativo) */
+.card .speed {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #2563eb; /* azul primário */
+  margin: 0.5rem 0 1rem;
+  letter-spacing: -1px;
+}
+
+/* Descrição */
+.card .plan-description {
   font-size: 1rem;
+  color: #475569;
+  margin-bottom: 1.2rem;
+  min-height: 40px;
 }
 
-.card .cta.block {
-  display: flex;
-  width: 100%;
-  padding: 1rem;
-  border-radius: var(--border-radius);
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  color: white;
-  font-weight: 600;
-  text-decoration: none;
-  transition: var(--transition);
-  box-shadow: var(--shadow);
-  justify-content: center;
-  margin-top: auto;
+/* Preço destacado */
+.card .price {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #16a34a; /* verde premium */
+  margin: 1rem 0;
 }
 
-.card .cta.block:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-hover);
+.card .price span {
+  font-size: 0.9rem;
+  color: #64748b;
+  font-weight: 500;
 }
+
+/* Efeito moderno no card */
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+}
+
+.card .speed {
+  font-size: 2.8rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #2563eb, #9333ea);
+  
+  -webkit-text-fill-color: transparent;
+}
+
 
 /* =========================
    COBERTURA / ÁREA DE ATUAÇÃO
