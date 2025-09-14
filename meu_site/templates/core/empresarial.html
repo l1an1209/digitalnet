@@ -1,0 +1,552 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Empresarial - {{ site_name }}</title>
+  <meta name="description" content="Soluções de internet corporativa de alta performance, seguras e confiáveis para sua empresa." />
+  <meta name="theme-color" content="#2563eb" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
+
+  <link rel="icon" href="{% static 'core/favicon.svg' %}" type="image/svg+xml" />
+  <link rel="stylesheet" href="{% static 'core/style.css' %}" />
+  <style>
+/* Grid de planos mais responsivo e compacto */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.plan-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.plan-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.12);
+}
+
+.plan-card.featured {
+  border: 2px solid #2563eb;
+  transform: scale(1.02);
+}
+
+.plan-card.featured:hover {
+  transform: scale(1.02) translateY(-5px);
+}
+
+.plan-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.plan-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.3rem;
+}
+
+.plan-speed {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0.3rem 0;
+}
+
+.plan-price {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  margin: 1rem 0;
+}
+
+.price-amount {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.price-period {
+  color: #64748b;
+  margin-left: 0.4rem;
+  font-weight: 500;
+}
+
+.plan-features {
+  margin: 1rem 0;
+  flex-grow: 1;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  color: #475569;
+  font-size: 0.85rem;
+}
+
+.feature-icon {
+  background: #f1f5f9;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.5rem;
+  color: #2563eb;
+  font-size: 0.7rem;
+}
+
+.plan-cta {
+  margin-top: auto;
+}
+
+.cta-plan {
+  display: block;
+  width: 100%;
+  padding: 0.9rem;
+  text-align: center;
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: white;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.cta-plan:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(37, 99, 235, 0.3);
+}
+
+.plan-tag {
+  display: block;
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+  color: #64748b;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .plan-card.featured {
+    transform: scale(1);
+  }
+}
+</style>
+<style>
+/* Grid de planos mais responsivo e compacto */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.plan-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.plan-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.12);
+}
+
+.plan-card.featured {
+  border: 2px solid #2563eb;
+  transform: scale(1.02);
+}
+
+.plan-card.featured:hover {
+  transform: scale(1.02) translateY(-5px);
+}
+
+.plan-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.plan-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.3rem;
+}
+
+.plan-speed {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0.3rem 0;
+}
+
+.plan-price {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  margin: 1rem 0;
+}
+
+.price-amount {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.price-period {
+  color: #64748b;
+  margin-left: 0.4rem;
+  font-weight: 500;
+}
+
+.plan-features {
+  margin: 1rem 0;
+  flex-grow: 1;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  color: #475569;
+  font-size: 0.85rem;
+}
+
+.feature-icon {
+  background: #f1f5f9;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.5rem;
+  color: #2563eb;
+  font-size: 0.7rem;
+}
+
+.plan-cta {
+  margin-top: auto;
+}
+
+.cta-plan {
+  display: block;
+  width: 100%;
+  padding: 0.9rem;
+  text-align: center;
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: white;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.cta-plan:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(37, 99, 235, 0.3);
+}
+
+.plan-tag {
+  display: block;
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+  color: #64748b;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .plan-card.featured {
+    transform: scale(1);
+  }
+}
+</style>
+
+</head>
+<body data-wa="69993735169">
+
+  <!-- HEADER -->
+  <header class="site-header" id="topo">
+    <div class="container header-inner">
+      <a class="brand" href="{% url 'home' %}" aria-label="{{ site_name }}">
+        <img src="{% static 'core/logo.svg' %}" class="brand-logo" width="32" height="32" alt="{{ site_name }}" />
+        <span class="brand-name">{{ site_name }}</span>
+      </a>
+      <nav class="main-nav" aria-label="Navegação principal">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
+          <span class="hamburger"></span>
+        </button>
+        <ul id="menu" class="nav-list">
+          <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+          <li><a href="#vantagens" class="nav-link">Vantagens</a></li>
+          <li><a href="#planos" class="nav-link">Planos</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
+          <li><a href="#contato" class="nav-link">Contato</a></li>
+        </ul>
+      </nav>
+      <a class="cta cta-header" href="https://wa.me/5569993735169?text={{ 'Quero contratar internet empresarial'|urlencode }}" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i>
+        <span>Contratar</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="hero">
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge"><i class="fas fa-building"></i> Internet Corporativa</div>
+        <h1 class="hero-title">Conexão <span class="text-gradient">Segura e Confiável</span> para Empresas</h1>
+        <p class="hero-subtitle">Alta performance, suporte prioritário e soluções sob medida para o seu negócio.</p>
+        <div class="hero-ctas">
+          <a class="cta primary" href="https://wa.me/5569993735169?text={{ 'Olá! Quero contratar internet empresarial.'|urlencode }}" target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i>
+            <span>Solicitar Proposta</span>
+          </a>
+          <a class="cta secondary" href="#planos">
+            <i class="fas fa-rocket"></i>
+            <span>Ver Planos</span>
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="visual-container">
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+ 
+
+  <!-- PLANOS SECTION -->
+  <section id="planos" class="section alt">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-subtitle">Planos para Empresas</span>
+        <h2 class="section-title">Escolha seu <span class="text-gradient">Plano</span></h2>
+        <p>Planos flexíveis e adaptáveis ao tamanho da sua empresa</p>
+      </div>
+      <div class="pricing-grid">
+        {% for plano in planos_empresariais %}
+        <div class="plan-card {% if plano.destaque %}featured{% endif %}">
+          {% if plano.destaque %}<div class="plan-badge">Mais Popular</div>{% endif %}
+          
+          <div class="plan-header">
+            <h3 class="plan-name">{{ plano.nome }}</h3>
+            <div class="plan-speed">{{ plano.velocidade }}</div>
+            <p class="plan-description">{{ plano.descricao }}</p>
+          </div>
+          
+          <div class="plan-price">
+            <span class="price-amount">R$ {{ plano.preco }}</span>
+            <span class="price-period">/mês</span>
+          </div>
+          
+          <div class="plan-features">
+            <div class="feature-item">
+              <div class="feature-icon"><i class="fas fa-check"></i></div>
+              <span>Fibra dedicada</span>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon"><i class="fas fa-check"></i></div>
+              <span>Suporte 24/7</span>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon"><i class="fas fa-check"></i></div>
+              <span>SLA garantido</span>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon"><i class="fas fa-check"></i></div>
+              <span>Equipamentos inclusos</span>
+            </div>
+            {% if plano.caracteristicas_adicionais %}
+            <div class="feature-item">
+              <div class="feature-icon"><i class="fas fa-check"></i></div>
+              <span>{{ plano.caracteristicas_adicionais }}</span>
+            </div>
+            {% endif %}
+          </div>
+          
+          <div class="plan-cta">
+            <a href="https://wa.me/5569993735169?text={{ plano.whatsapp_text|urlencode }}" class="cta-plan" target="_blank" rel="noopener">
+              <i class="fab fa-whatsapp"></i> Solicitar Proposta
+            </a>
+            <span class="plan-tag">Instalação gratuita</span>
+          </div>
+        </div>
+        {% empty %}
+        <p>Nenhum plano empresarial cadastrado.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+   <!-- VANTAGENS SECTION -->
+  <section id="vantagens" class="section">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-subtitle">Por que escolher {{ site_name }}</span>
+        <h2 class="section-title">Vantagens <span class="text-gradient">Empresariais</span></h2>
+      </div>
+      <div class="vantagens-grid">
+        <div class="vantagem-card">
+          <div class="vantagem-icon"><i class="fas fa-tachometer-alt"></i></div>
+          <h3>Fibra Dedicada</h3>
+          <p>Conexão estável e velocidade garantida, sem interferência externa.</p>
+        </div>
+        <div class="vantagem-card">
+          <div class="vantagem-icon"><i class="fas fa-shield-alt"></i></div>
+          <h3>Segurança Avançada</h3>
+          <p>Proteção corporativa, firewall e monitoramento contínuo.</p>
+        </div>
+        <div class="vantagem-card">
+          <div class="vantagem-icon"><i class="fas fa-headset"></i></div>
+          <h3>Suporte Prioritário</h3>
+          <p>Atendimento 24/7 com equipe especializada para empresas.</p>
+        </div>
+        <div class="vantagem-card">
+          <div class="vantagem-icon"><i class="fas fa-cogs"></i></div>
+          <h3>Equipamentos Gerenciados</h3>
+          <p>Fornecemos e monitoramos roteadores e switches corporativos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section id="faq" class="section">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-subtitle">Dúvidas Frequentes</span>
+        <h2 class="section-title">Perguntas <span class="text-gradient">Empresariais</span></h2>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <button class="faq-question"><span>Qual o prazo de instalação?</span> <i class="fas fa-chevron-down"></i></button>
+          <div class="faq-answer"><p>O prazo médio é de 1 a 5 dias úteis, dependendo da infraestrutura local e do plano escolhido.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question"><span>Existe contrato mínimo?</span> <i class="fas fa-chevron-down"></i></button>
+          <div class="faq-answer"><p>Sim, geralmente 12 meses, mas oferecemos flexibilidade para empresas maiores.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question"><span>Como funciona o suporte técnico?</span> <i class="fas fa-chevron-down"></i></button>
+          <div class="faq-answer"><p>Suporte corporativo 24/7, com equipe dedicada para atendimento prioritário.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question"><span>É possível customizar o plano?</span> <i class="fas fa-chevron-down"></i></button>
+          <div class="faq-answer"><p>Sim, nossos planos podem ser adaptados de acordo com a necessidade da sua empresa.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO SECTION -->
+  <section id="contato" class="section alt">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-subtitle">Fale conosco</span>
+        <h2 class="section-title">Solicite <span class="text-gradient">Proposta</span></h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-card">
+            <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+            <h3>WhatsApp</h3>
+            <p>Atendimento rápido e direto</p>
+            <a href="https://wa.me/5569993735169?text={{ 'Olá! Quero contratar internet empresarial.'|urlencode }}" class="contact-link">69 99373-5169</a>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <h3>Email</h3>
+            <p>Respondemos em até 24h</p>
+            <a href="mailto:digitalnet@gmail.com" class="contact-link">digitalnet396@gmail.com</a>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <h3>Endereço</h3>
+            <span class="contact-address">Rua Matogrossense, N: 247, Bairro Urupá</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a class="brand" href="{% url 'home' %}" aria-label="{{ site_name }}">
+            <img src="{% static 'core/logo.svg' %}" class="brand-logo" width="32" height="32" alt="{{ site_name }}" />
+            <span class="brand-name">{{ site_name }}</span>
+          </a>
+          <p>Conectando empresas com internet de alta performance.</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 {{ site_name }}. Todos os direitos reservados.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/5569993735169"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/5569993735169" class="floating-whatsapp" target="_blank" rel="noopener">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script src="{% static 'core/scripts.js' %}"></script>
+</body>
+</html>

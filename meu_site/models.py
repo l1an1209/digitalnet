@@ -29,3 +29,15 @@ class BusinessLead(models.Model):
     def __str__(self):
         return f"{self.company_name} ({self.contact_name})"
 
+
+# meu_site/models.py
+class PlanoEmpresarial(models.Model):
+    nome = models.CharField(max_length=100)
+    velocidade = models.CharField(max_length=50)  # Ex: "500 Mega"
+    preco = models.DecimalField(max_digits=8, decimal_places=2)
+    descricao = models.TextField(blank=True, null=True)
+    destaque = models.BooleanField(default=False)
+    whatsapp_text = models.CharField(max_length=255, default="Olá! Quero contratar este plano.")
+
+    def __str__(self):
+        return self.nome

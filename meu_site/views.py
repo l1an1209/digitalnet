@@ -1,10 +1,12 @@
 
 from django.shortcuts import render
 from django.conf import settings
-from .models import PlanoInternet, BusinessLead
+from .models import PlanoInternet
 from django.views.decorators.http import require_http_methods
-from django.http import HttpResponseRedirect
-from django.urls import reverse
+
+from .models import PlanoEmpresarial
+
+
 
 def home(request):
     planos = PlanoInternet.objects.all().order_by('-destaque')
@@ -51,28 +53,13 @@ def home(request):
     return render(request, 'core/home.html', context)
 
 
-@require_http_methods(["GET", "POST"])
-def empresarial(request):
-    if request.method == 'POST':
-        company_name = request.POST.get('company_name', '').strip()
-        cnpj = request.POST.get('cnpj', '').strip()
-        contact_name = request.POST.get('contact_name', '').strip()
-        email = request.POST.get('email', '').strip()
-        phone = request.POST.get('phone', '').strip()
-        message = request.POST.get('message', '').strip()
-        if company_name and cnpj and contact_name and phone:
-            BusinessLead.objects.create(
-                company_name=company_name,
-                cnpj=cnpj,
-                contact_name=contact_name,
-                email=email or 'sem-email@local',
-                phone=phone,
-                message=message,
-            )
-            return HttpResponseRedirect(reverse('empresarial') + '?ok=1')
+# meu_site/views.py
 
+def empresarial(request):
+    planos_empresariais = PlanoEmpresarial.objects.all()
     context = {
-        'site_name': getattr(settings, 'SITE_NAME', 'Meu Provedor'),
-        'whatsapp_number': getattr(settings, 'WHATSAPP_NUMBER', '5599999999999'),
+        'site_name': 'DigitalNet',
+        'planos_empresariais': planos_empresariais,
     }
     return render(request, 'core/empresarial.html', context)
+

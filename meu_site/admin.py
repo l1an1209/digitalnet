@@ -1,6 +1,9 @@
 from django.contrib import admin, messages
 from .models import PlanoInternet, BusinessLead
 
+from .models import PlanoEmpresarial
+
+admin.site.register(PlanoEmpresarial)
 
 def marcar_como_destaque(modeladmin, request, queryset):
     atualizados = queryset.update(destaque=True)
