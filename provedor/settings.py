@@ -75,11 +75,15 @@ WSGI_APPLICATION = 'provedor.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+
+import dj_database_url
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default='postgresql://db_digital_7x0q_user:Tm9LWuIHFpban9r5I44WKvOY9sXglFiO@dpg-d334k8odl3ps738ig2eg-a.oregon-postgres.render.com:5432/db_digital_7x0q',
+        conn_max_age=600,
+        ssl_require=True
+    )
 }
 
 
