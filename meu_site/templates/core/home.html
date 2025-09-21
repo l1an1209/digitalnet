@@ -1084,30 +1084,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   gtag('config', 'G-QCQYNEBHD5');
 </script>
  <!-- HEADER -->
-  <header class="site-header" id="topo">
-    <div class="container header-inner">
-      <a class="brand" href="{% url 'home' %}" aria-label="{{ site_name }}">
-        <img src="{% static 'core/logo.svg' %}" class="brand-logo" width="32" height="32" alt="{{ site_name }}" />
-        <span class="brand-name">{{ site_name }}</span>
-      </a>
-      <nav class="main-nav" aria-label="Navegação principal">
-        <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
-          <span class="hamburger"></span>
-        </button>
-        <ul id="menu" class="nav-list">
-          <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>
-          <li><a href="#vantagens" class="nav-link">Vantagens</a></li>
-          <li><a href="#planos" class="nav-link">Planos</a></li>
-          <li><a href="#faq" class="nav-link">FAQ</a></li>
-          <li><a href="#contato" class="nav-link">Contato</a></li>
-        </ul>
-      </nav>
-      <a class="cta cta-header" href="https://wa.me/5569993735169?text={{ 'Quero contratar internet empresarial'|urlencode }}" target="_blank" rel="noopener">
-        <i class="fab fa-whatsapp"></i>
-        <span>Contratar</span>
-      </a>
-    </div>
-  </header>
+  <!-- HEADER -->
+ <!-- HEADER -->
+<header class="site-header" id="topo">
+  <div class="container header-inner">
+    <a class="brand" href="{% url 'home' %}" aria-label="{{ site_name }}">
+      <img src="{% static 'core/logo.svg' %}" class="brand-logo" width="32" height="32" alt="{{ site_name }}" />
+      <span class="brand-name">{{ site_name }}</span>
+    </a>
+    <nav class="main-nav" aria-label="Navegação principal">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
+        <span class="hamburger"></span>
+      </button>
+      <ul id="menu" class="nav-list">
+        <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+        <li><a href="https://www.tecmundo.com.br/" class="nav-link">Tecnologia</a></li>
+        <li><a href="#planos" class="nav-link">Planos</a></li>
+        <li><a href="#faq" class="nav-link">FAQ</a></li>
+        <li><a href="#contato" class="nav-link">Contato</a></li>
+        <li><a href="https://5172.centralassinante.com.br/#/login" class="nav-link" target="_blank" rel="noopener">Central do Assinante</a></li>
+      </ul>
+    </nav>
+    <a class="cta cta-header" href="https://wa.me/5569993735169?text={{ 'Quero contratar internet empresarial'|urlencode }}" target="_blank" rel="noopener">
+      <i class="fab fa-whatsapp"></i>
+      <span>Contratar</span>
+    </a>
+  </div>
+</header>
+
 
     <!-- HERO SECTION -->
     <section class="hero" id="hero">
