@@ -1036,6 +1036,47 @@
             }
         }
 
+
+        /* Container geral da imagem */
+.about-visual {
+  display: flex;
+  justify-content: center; /* centraliza horizontalmente */
+  align-items: center;     /* centraliza verticalmente se houver altura definida */
+  padding: 2rem 1rem;      /* espaçamento ao redor */
+  background-color: #f9f9f9; /* cor de fundo suave */
+}
+
+/* Wrapper para controle da imagem */
+.visual-wrapper {
+  max-width: 600px;       /* largura máxima da imagem */
+  width: 100%;            /* ocupa até 100% da largura do container */
+  overflow: hidden;
+  border-radius: 12px;    /* cantos arredondados */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* sombra elegante */
+  transition: transform 0.3s ease;
+}
+
+/* Efeito leve ao passar o mouse */
+.visual-wrapper:hover {
+  transform: scale(1.05); /* zoom suave */
+}
+
+/* Imagem */
+.hero-image {
+  width: 100%;            /* ocupa toda a largura do wrapper */
+  height: auto;           /* mantém proporção */
+  display: block;
+  object-fit: cover;      /* garante que a imagem preencha o container sem distorcer */
+  border-radius: 12px;
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 768px) {
+  .visual-wrapper {
+    max-width: 90%;       /* diminui a largura em telas menores */
+  }
+}
+
         @media (max-width: 576px) {
             .hero-title {
                 font-size: 2rem;
@@ -1315,7 +1356,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
             <div class="about-visual">
                 <div class="visual-wrapper">
-                    <img src="{% static 'core/digitalnet1.jpg' %}" alt="Nosso provedor de internet" class="hero-image">
+                    <img src="{% static 'core/digitaltra.webp' %}" alt="Nosso provedor de internet" class="hero-image">
                 </div>
             </div>
         </div>
