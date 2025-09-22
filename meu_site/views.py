@@ -1,10 +1,14 @@
 
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.conf import settings
-from .models import PlanoInternet
+from .models import Noticia, PlanoInternet
 from django.views.decorators.http import require_http_methods
 
 from .models import PlanoEmpresarial
+
+
+from django.shortcuts import render
+from .models import Noticia
 
 
 
@@ -52,6 +56,9 @@ def home(request):
     }
     return render(request, 'core/home.html', context)
 
+def home(request):
+    ultimas_noticias = Noticia.objects.all().order_by('-data_publicacao')[:3]  # pega as 3 últimas
+    return render(request, 'core/home.html', {'ultimas_noticias': ultimas_noticias})
 
 # meu_site/views.py
 
@@ -63,3 +70,10 @@ def empresarial(request):
     }
     return render(request, 'core/empresarial.html', context)
 
+def noticias(request):
+    noticias = Noticia.objects.all().order_by('-data_publicacao')
+    return render(request, 'noticias.html', {'noticias': noticias})
+
+def detalhe_noticia(request, slug):
+    noticia = get_object_or_404(Noticia, slug=slug)
+    return render(request, 'noticia_detalhe.html', {'noticia': noticia})

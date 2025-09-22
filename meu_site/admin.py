@@ -1,9 +1,13 @@
 from django.contrib import admin, messages
 from .models import PlanoInternet, BusinessLead
 
+
+from .models import Noticia
+
 from .models import PlanoEmpresarial
 
 admin.site.register(PlanoEmpresarial)
+
 
 def marcar_como_destaque(modeladmin, request, queryset):
     atualizados = queryset.update(destaque=True)
@@ -30,3 +34,15 @@ class BusinessLeadAdmin(admin.ModelAdmin):
     list_display = ("created_at", "company_name", "contact_name", "phone", "status")
     list_filter = ("status", "created_at")
     search_fields = ("company_name", "cnpj", "contact_name", "email", "phone")
+
+
+
+
+class NoticiaAdmin(admin.ModelAdmin):
+    list_display = ('titulo', 'categoria', 'data_publicacao')  # colunas exibidas na lista
+    prepopulated_fields = {'slug': ('titulo',)}  # gera slug automaticamente
+    search_fields = ('titulo', 'resumo', 'conteudo', 'categoria')  # campos pesquisáveis
+    list_filter = ('categoria', 'data_publicacao')  # filtros laterais
+    date_hierarchy = 'data_publicacao'  # navegação por data
+
+admin.site.register(Noticia, NoticiaAdmin)

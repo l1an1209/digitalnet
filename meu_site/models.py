@@ -41,3 +41,17 @@ class PlanoEmpresarial(models.Model):
 
     def __str__(self):
         return self.nome
+
+
+# models.py
+class Noticia(models.Model):
+    titulo = models.CharField(max_length=200)
+    slug = models.SlugField(unique=True)
+    resumo = models.TextField()
+    conteudo = models.TextField()
+    imagem = models.ImageField(upload_to='noticias/')
+    data_publicacao = models.DateTimeField(auto_now_add=True)
+    categoria = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.titulo

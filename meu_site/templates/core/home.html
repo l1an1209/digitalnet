@@ -1,5 +1,4 @@
-{% load static%}
-
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -330,6 +329,93 @@
             color: var(--primary);
         }
 
+        <!-- CSS Adicional -->
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .news-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .news-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .news-content {
+            padding: 1rem;
+        }
+
+        .news-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-summary {
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+            color: #555;
+        }
+
+        .news-meta {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-link {
+            font-weight: bold;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .news-link i {
+            margin-left: 0.3rem;
+        }
+
+        .news-footer {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn-primary i {
+            margin-left: 0.5rem;
+        }
+
+
+
+
         .hero-visual {
             position: relative;
             display: flex;
@@ -422,13 +508,10 @@
             flex-direction: column;
         }
 
-
-
         .hero-video {
-        width: 100%;
-        height: auto;
-        border-radius: 10px; /* opcional */
-
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
         }
 
         .pricing-card::before {
@@ -961,6 +1044,117 @@
             100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
+        /* NOVOS ESTILOS PARA SEÇÃO DE NOTÍCIAS */
+        
+        /* Seção de Notícias na Home */
+        .news-preview {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .news-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .news-content {
+            padding: 20px;
+        }
+        
+        .news-date {
+            font-size: 0.875rem;
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+        
+        .news-title {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .news-excerpt {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .news-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .news-link i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .news-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        .news-cta {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        /* Container geral da imagem */
+        .about-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 1rem;
+            background-color: #f9f9f9;
+        }
+
+        /* Wrapper para controle da imagem */
+        .visual-wrapper {
+            max-width: 600px;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        /* Efeito leve ao passar o mouse */
+        .visual-wrapper:hover {
+            transform: scale(1.05);
+        }
+
+        /* Imagem */
+        .hero-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
         /* Responsividade */
         @media (max-width: 992px) {
             .hero-inner {
@@ -987,6 +1181,10 @@
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 40px;
+            }
+            
+            .news-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
         }
 
@@ -1036,48 +1234,11 @@
                 gap: 20px;
                 text-align: center;
             }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
         }
-
-
-        /* Container geral da imagem */
-.about-visual {
-  display: flex;
-  justify-content: center; /* centraliza horizontalmente */
-  align-items: center;     /* centraliza verticalmente se houver altura definida */
-  padding: 2rem 1rem;      /* espaçamento ao redor */
-  background-color: #f9f9f9; /* cor de fundo suave */
-}
-
-/* Wrapper para controle da imagem */
-.visual-wrapper {
-  max-width: 600px;       /* largura máxima da imagem */
-  width: 100%;            /* ocupa até 100% da largura do container */
-  overflow: hidden;
-  border-radius: 12px;    /* cantos arredondados */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* sombra elegante */
-  transition: transform 0.3s ease;
-}
-
-/* Efeito leve ao passar o mouse */
-.visual-wrapper:hover {
-  transform: scale(1.05); /* zoom suave */
-}
-
-/* Imagem */
-.hero-image {
-  width: 100%;            /* ocupa toda a largura do wrapper */
-  height: auto;           /* mantém proporção */
-  display: block;
-  object-fit: cover;      /* garante que a imagem preencha o container sem distorcer */
-  border-radius: 12px;
-}
-
-/* Responsividade para telas pequenas */
-@media (max-width: 768px) {
-  .visual-wrapper {
-    max-width: 90%;       /* diminui a largura em telas menores */
-  }
-}
 
         @media (max-width: 576px) {
             .hero-title {
@@ -1104,57 +1265,58 @@
             .visual-container, .visual-wrapper {
                 height: 300px;
             }
+            
+            .visual-wrapper {
+                max-width: 90%;
+            }
         }
     </style>
 </head>
 <body>
-  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-MZ278J2Q');</script>
-<!-- End Google Tag Manager -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MZ278J2Q');</script>
+    <!-- End Google Tag Manager -->
 
-  
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QCQYNEBHD5"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QCQYNEBHD5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-QCQYNEBHD5');
+    </script>
 
-  gtag('config', 'G-QCQYNEBHD5');
-</script>
- <!-- HEADER -->
-  <!-- HEADER -->
- <!-- HEADER -->
-<header class="site-header" id="topo">
-  <div class="container header-inner">
-    <a class="brand" href="{% url 'home' %}" aria-label="{{ site_name }}">
-      <img src="{% static 'core/logo.svg' %}" class="brand-logo" width="32" height="32" alt="{{ site_name }}" />
-      <span class="brand-name">{{ site_name }}</span>
-    </a>
-    <nav class="main-nav" aria-label="Navegação principal">
-      <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
-        <span class="hamburger"></span>
-      </button>
-      <ul id="menu" class="nav-list">
-        <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>
-        <li><a href="https://www.tecmundo.com.br/" class="nav-link">Tecnologia</a></li>
-        <li><a href="#planos" class="nav-link">Planos</a></li>
-        <li><a href="#faq" class="nav-link">FAQ</a></li>
-        <li><a href="#contato" class="nav-link">Contato</a></li>
-        <li><a href="https://5172.centralassinante.com.br/#/login" class="nav-link" target="_blank" rel="noopener">Central do Assinante</a></li>
-      </ul>
-    </nav>
-    <a class="cta cta-header" href="https://wa.me/5569993735169?text={{ 'Quero contratar internet empresarial'|urlencode }}" target="_blank" rel="noopener">
-      <i class="fab fa-whatsapp"></i>
-      <span>Contratar</span>
-    </a>
-  </div>
-</header>
-
+    <!-- HEADER -->
+    <header class="site-header" id="topo">
+        <div class="container header-inner">
+            <a class="brand" href="{% url 'home' %}" aria-label="{{ site_name }}">
+                <img src="{% static 'core/logo.svg' %}" class="brand-logo" width="32" height="32" alt="{{ site_name }}" />
+                <span class="brand-name">{{ site_name }}</span>
+            </a>
+            <nav class="main-nav" aria-label="Navegação principal">
+                <button class="nav-toggle" aria-expanded="false" aria-controls="menu">
+                    <span class="hamburger"></span>
+                </button>
+                <ul id="menu" class="nav-list">
+                    <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                    <li><a href="{% url 'noticias' %}" class="nav-link">Notícias</a></li>
+                    <li><a href="https://www.tecmundo.com.br/" class="nav-link">Tecnologia</a></li>
+                    <li><a href="#planos" class="nav-link">Planos</a></li>
+                    <li><a href="#faq" class="nav-link">FAQ</a></li>
+                    <li><a href="#contato" class="nav-link">Contato</a></li>
+                    <li><a href="https://5172.centralassinante.com.br/#/login" class="nav-link" target="_blank" rel="noopener">Central do Assinante</a></li>
+                </ul>
+            </nav>
+            <a class="cta cta-header" href="https://wa.me/5569993735169?text={{ 'Quero contratar internet empresarial'|urlencode }}" target="_blank" rel="noopener">
+                <i class="fab fa-whatsapp"></i>
+                <span>Contratar</span>
+            </a>
+        </div>
+    </header>
 
     <!-- HERO SECTION -->
     <section class="hero" id="hero">
@@ -1191,65 +1353,122 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     </div>
                 </div>
             </div>
-           <div class="visual-wrapper">
-        <video autoplay muted loop class="hero-video">
-            <source src="{% static 'core/videosdigital.mp4' %}" type="video/mp4">
-            Seu navegador não suporta vídeo.
-        </video>
-</div>
+            <div class="visual-wrapper">
+                <video autoplay muted loop class="hero-video">
+                    <source src="{% static 'core/videosdigital.mp4' %}" type="video/mp4">
+                    Seu navegador não suporta vídeo.
+                </video>
+            </div>
         </div>
     </section>
 
     <!-- PLANOS SECTION -->
-  <section id="planos" class="section alt">
-  <div class="container">
-    <div class="section-header center">
-      <span class="section-subtitle">Planos sob medida</span>
-      <h2 class="section-title">Conectividade <span class="text-gradient">Premium</span></h2>
-      <p>Escolha o plano ideal para sua necessidade</p>
-    </div>
+    <section id="planos" class="section alt">
+        <div class="container">
+            <div class="section-header center">
+                <span class="section-subtitle">Planos sob medida</span>
+                <h2 class="section-title">Conectividade <span class="text-gradient">Premium</span></h2>
+                <p>Escolha o plano ideal para sua necessidade</p>
+            </div>
 
-    <div class="pricing-grid">
-      {% for plano in planos %}
-      <article class="card pricing-card {% if plano.destaque %}featured{% endif %}">
-        {% if plano.destaque %}<span class="badge">Mais popular</span>{% endif %}
+            <div class="pricing-grid">
+                {% for plano in planos %}
+                <article class="card pricing-card {% if plano.destaque %}featured{% endif %}">
+                    {% if plano.destaque %}<span class="badge">Mais popular</span>{% endif %}
 
-        <h3 class="plan-name">{{ plano.nome }}</h3>
-        
-        <!-- Velocidade grande e chamativa -->
-        <div class="plan-speed">
-          <span class="speed-number">{{ plano.velocidade }}</span>
-          <span class="speed-label">Mbps</span>
+                    <h3 class="plan-name">{{ plano.nome }}</h3>
+                    
+                    <!-- Velocidade grande e chamativa -->
+                    <div class="plan-speed">
+                        <span class="speed-number">{{ plano.velocidade }}</span>
+                        <span class="speed-label">Mbps</span>
+                    </div>
+
+                    <!-- Descrição -->
+                    <p class="plan-description">{{ plano.descricao }}</p>
+
+                    <!-- Preço destacado -->
+                    <div class="plan-price">
+                        <span class="currency">R$</span>
+                        <span class="price-number">{{ plano.preco }}</span>
+                        <span class="per-month">/mês</span>
+                    </div>
+
+                    <ul class="benefits-list">
+                        <li><i class="fas fa-check"></i> Wi-Fi Grátis</li>
+                        <li><i class="fas fa-check"></i> Instalação Inclusa</li>
+                        <li><i class="fas fa-check"></i> Suporte 24/7</li>
+                        <li><i class="fas fa-check"></i> Equipamento Moderno</li>
+                    </ul>
+
+                    <a class="cta block" href="https://wa.me/5569993735169?text={{ plano.whatsapp_text|urlencode }}" target="_blank" rel="noopener">
+                        <i class="fab fa-whatsapp"></i>
+                        Assinar agora
+                    </a>
+                </article>
+                {% empty %}
+                <p>Nenhum plano cadastrado ainda.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+ <!-- noticias  -->
+<!-- Seção de Notícias -->
+<section class="news-section">
+    <div class="container">
+        <h2 class="section-title">Últimas Notícias</h2>
+
+        <div class="news-grid">
+            {% for noticia in ultimas_noticias %}
+                <div class="news-card fade-in">
+                    {% if noticia.imagem %}
+                        <img src="{{ noticia.imagem.url }}" alt="{{ noticia.titulo }}" class="news-image" loading="lazy">
+                    {% else %}
+                        <img src="{% static 'core/default-news.jpg' %}" alt="Notícia sem imagem" class="news-image" loading="lazy">
+                    {% endif %}
+
+                    <div class="news-content">
+                        <h3 class="news-title">{{ noticia.titulo }}</h3>
+                        <p class="news-summary">{{ noticia.resumo|truncatechars:120 }}</p>
+                        <div class="news-meta">
+                            <span class="news-date">{{ noticia.data_publicacao|date:"d \d\e M \d\e Y" }}</span>
+                        </div>
+                        <a href="{% url 'noticia_detalhe' noticia.slug %}" class="news-link">
+                            Ler mais <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            {% empty %}
+                <p>Nenhuma notícia disponível no momento.</p>
+            {% endfor %}
         </div>
 
-        <!-- Descrição -->
-        <p class="plan-description">{{ plano.descricao }}</p>
-
-        <!-- Preço destacado -->
-        <div class="plan-price">
-          <span class="currency">R$</span>
-          <span class="price-number">{{ plano.preco }}</span>
-          <span class="per-month">/mês</span>
+        <div class="news-footer">
+            <a href="{% url 'noticias'%}" class="btn btn-primary">
+                Ver todas as notícias <i class="fas fa-arrow-right"></i>
+            </a>
         </div>
-
-        <ul class="benefits-list">
-          <li><i class="fas fa-check"></i> Wi-Fi Grátis</li>
-          <li><i class="fas fa-check"></i> Instalação Inclusa</li>
-          <li><i class="fas fa-check"></i> Suporte 24/7</li>
-          <li><i class="fas fa-check"></i> Equipamento Moderno</li>
-        </ul>
-
-        <a class="cta block" href="https://wa.me/5569993735169?text={{ plano.whatsapp_text|urlencode }}" target="_blank" rel="noopener">
-          <i class="fab fa-whatsapp"></i>
-          Assinar agora
-        </a>
-      </article>
-      {% empty %}
-      <p>Nenhum plano cadastrado ainda.</p>
-      {% endfor %}
     </div>
-  </div>
 </section>
+
+<!-- Script para Fade-in ao scroll -->
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+    const fadeElems = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // animação só uma vez
+            }
+        });
+    }, { threshold: 0.1 });
+
+    fadeElems.forEach(el => observer.observe(el));
+});
+</script>
+
+
 
     <!-- VANTAGENS SECTION -->
     <section class="vantagens section">
@@ -1264,7 +1483,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         <i class="fas fa-tachometer-alt"></i>
                     </div>
                     <h3>Velocidade Simétrica</h3>
-                    <p>Download e upload na mesma velocidade para melhor experiência em chamadas, jogos e transmissões.</p>
+                    <p>Download and upload na mesma velocidade para melhor experiência em chamadas, jogos e transmissões.</p>
                 </div>
                 <div class="vantagem-card fade-in">
                     <div class="vantagem-icon">
@@ -1338,7 +1557,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <span class="section-subtitle">Nossa história</span>
                 <h2 class="section-title">Sobre a <span class="text-gradient">Digital Net</span></h2>
                 <p>Somos uma empresa especializada em fornecer internet de alta velocidade através de fibra óptica, com foco em qualidade e atendimento personalizado.</p>
-                <p>Nossa missão é conectar pessoas e negócios com tecnologia de ponta, oferecendo estabilidade e suporte técnico especializado.</p>
+                <p>Nossa missão é conectar pessoas e negócios com tecnologia de ponta, oferecando estabilidade e suporte técnico especializado.</p>
                 <div class="about-features">
                     <div class="about-feature fade-in">
                         <i class="fas fa-medal"></i>
@@ -1405,7 +1624,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="faq-answer">
-                        <p>Oferecemos suporte por WhatsApp, telefone e email, com atendimento 24 horas para emergências e 8h às 18h para demais solicitações.</p>
+                        <p>Oferecemos suporte por WhatsApp, telefone and email, com atendimento 24 horas para emergências e 8h às 18h para demais solicitações.</p>
                     </div>
                 </div>
             </div>
@@ -1472,6 +1691,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                             <li><a href="#cobertura">Cobertura</a></li>
                             <li><a href="#sobre">Sobre</a></li>
                             <li><a href="#faq">FAQ</a></li>
+                            <li><a href="{% url 'noticias' %}">Notícias</a></li>
                         </ul>
                     </div>
                     <div class="footer-column">
@@ -1572,29 +1792,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         
         window.addEventListener('scroll', checkFade);
         window.addEventListener('load', checkFade);
-        
-        // Animação de digitação no hero (opcional)
-        function typeEffect(element, text, speed) {
-            let i = 0;
-            element.innerHTML = '';
-            
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            
-            type();
-        }
-        
-        // Se quiser usar animação de digitação no título:
-        // window.addEventListener('DOMContentLoaded', () => {
-        //     const heroTitle = document.querySelector('.hero-title');
-        //     const originalText = heroTitle.textContent;
-        //     typeEffect(heroTitle, originalText, 100);
-        // });
     </script>
 </body>
 </html>
