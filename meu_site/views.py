@@ -51,8 +51,12 @@ def home(request):
         })
     coverage.sort(key=lambda x: x['key'])
 
+    # Buscar as últimas notícias
+    ultimas_noticias = Noticia.objects.all().order_by('-data_publicacao')[:3]
+
     context = {
         'planos': planos,
+        'ultimas_noticias': ultimas_noticias,
         'whatsapp_number': getattr(settings, 'WHATSAPP_NUMBER', '5599999999999'),
         'whatsapp_number_formatted': format_whatsapp(getattr(settings, 'WHATSAPP_NUMBER', '')),
         'site_name': getattr(settings, 'SITE_NAME', 'Meu Provedor'),
@@ -62,10 +66,6 @@ def home(request):
         'coverage': coverage,
     }
     return render(request, 'core/home.html', context)
-
-def home(request):
-    ultimas_noticias = Noticia.objects.all().order_by('-data_publicacao')[:3]  # pega as 3 últimas
-    return render(request, 'core/home.html', {'ultimas_noticias': ultimas_noticias})
 
 # meu_site/views.py
 
@@ -83,4 +83,13 @@ def noticias(request):
 
 def detalhe_noticia(request, slug):
     noticia = get_object_or_404(Noticia, slug=slug)
-    return render(request, 'noticia_detalhe.html', {'noticia': noticia})
+    # Buscar notícias relacionadas (mesma categoria, excluindo a atual)
+    noticias_relacionadas = Noticia.objects.filter(
+        categoria=noticia.categoria
+    ).exclude(id=noticia.id).order_by('-data_publicacao')[:3]
+    
+    context = {
+        'noticia': noticia,
+        'noticias_relacionadas': noticias_relacionadas,
+    }
+    return render(request, 'noticia_detalhe.html', context)

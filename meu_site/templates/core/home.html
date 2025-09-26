@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5451545777538942"
      crossorigin="anonymous"></script>
     <meta charset="UTF-8">
@@ -1061,15 +1062,16 @@
         
         .news-card {
             background: white;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
         
         .news-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
         }
         
         .news-image {
@@ -1079,47 +1081,92 @@
         }
         
         .news-content {
-            padding: 20px;
+            padding: 24px;
         }
         
-        .news-date {
-            font-size: 0.875rem;
-            color: var(--gray);
-            margin-bottom: 10px;
+        .news-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 0.9rem;
+            color: #64748b;
         }
         
-        .news-title {
-            font-size: 1.25rem;
-            margin-bottom: 10px;
+        .news-category {
+            background: linear-gradient(135deg, #2563eb, #9333ea);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
             font-weight: 600;
         }
         
+        .news-date {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .news-title {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+            color: #1e293b;
+            line-height: 1.3;
+        }
+        
         .news-excerpt {
-            color: var(--gray);
-            margin-bottom: 15px;
+            color: #64748b;
+            margin-bottom: 20px;
             font-size: 0.95rem;
+            line-height: 1.6;
         }
         
         .news-link {
-            color: var(--primary);
+            color: #2563eb;
             text-decoration: none;
             font-weight: 600;
             display: inline-flex;
             align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+        }
+        
+        .news-link:hover {
+            color: #9333ea;
+            transform: translateX(5px);
         }
         
         .news-link i {
-            margin-left: 5px;
             transition: transform 0.3s ease;
         }
         
         .news-link:hover i {
-            transform: translateX(5px);
+            transform: translateX(3px);
         }
         
         .news-cta {
             text-align: center;
             margin-top: 40px;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #64748b;
+        }
+        
+        .empty-state i {
+            font-size: 4rem;
+            color: #e2e8f0;
+            margin-bottom: 1rem;
+        }
+        
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #475569;
         }
         
         /* Container geral da imagem */
@@ -1412,44 +1459,62 @@
             </div>
         </div>
     </section>
- <!-- noticias  -->
-<!-- Seção de Notícias -->
-<section class="news-section">
-    <div class="container">
-        <h2 class="section-title">Últimas Notícias</h2>
+    <!-- NOTÍCIAS SECTION -->
+    <section class="news-preview">
+        <div class="container">
+            <div class="section-header center">
+                <span class="section-subtitle">Fique por dentro</span>
+                <h2 class="section-title">Últimas <span class="text-gradient">Notícias</span></h2>
+                <p>Novidades e atualizações da Digital Net</p>
+            </div>
 
-        <div class="news-grid">
-            {% for noticia in ultimas_noticias %}
-                <div class="news-card fade-in">
-                    {% if noticia.imagem %}
-                        <img src="{{ noticia.imagem.url }}" alt="{{ noticia.titulo }}" class="news-image" loading="lazy">
-                    {% else %}
-                        <img src="{% static 'core/default-news.jpg' %}" alt="Notícia sem imagem" class="news-image" loading="lazy">
-                    {% endif %}
+            {% if ultimas_noticias %}
+                <div class="news-grid">
+                    {% for noticia in ultimas_noticias %}
+                        <article class="news-card fade-in">
+                            {% if noticia.imagem %}
+                                <img src="{{ noticia.imagem.url }}" alt="{{ noticia.titulo }}" class="news-image" loading="lazy">
+                            {% else %}
+                                <div class="news-image" style="background: linear-gradient(135deg, #2563eb, #9333ea); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+                                    <i class="fas fa-newspaper"></i>
+                                </div>
+                            {% endif %}
 
-                    <div class="news-content">
-                        <h3 class="news-title">{{ noticia.titulo }}</h3>
-                        <p class="news-summary">{{ noticia.resumo|truncatechars:120 }}</p>
-                        <div class="news-meta">
-                            <span class="news-date">{{ noticia.data_publicacao|date:"d \d\e M \d\e Y" }}</span>
-                        </div>
-                        <a href="{% url 'noticia_detalhe' noticia.slug %}" class="news-link">
-                            Ler mais <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
+                            <div class="news-content">
+                                <div class="news-meta">
+                                    <span class="news-category">{{ noticia.categoria }}</span>
+                                    <span class="news-date">
+                                        <i class="fas fa-calendar-alt"></i>
+                                        {{ noticia.data_publicacao|date:"d \d\e M \d\e Y" }}
+                                    </span>
+                                </div>
+
+                                <h3 class="news-title">{{ noticia.titulo }}</h3>
+                                <p class="news-excerpt">{{ noticia.resumo|truncatechars:120 }}</p>
+
+                                <a href="{% url 'noticia_detalhe' noticia.slug %}" class="news-link">
+                                    Ler mais <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </article>
+                    {% endfor %}
                 </div>
-            {% empty %}
-                <p>Nenhuma notícia disponível no momento.</p>
-            {% endfor %}
-        </div>
 
-        <div class="news-footer">
-            <a href="{% url 'noticias'%}" class="btn btn-primary">
-                Ver todas as notícias <i class="fas fa-arrow-right"></i>
-            </a>
+                <div class="news-cta">
+                    <a href="{% url 'noticias' %}" class="cta primary">
+                        <i class="fas fa-newspaper"></i>
+                        Ver todas as notícias
+                    </a>
+                </div>
+            {% else %}
+                <div class="empty-state" style="text-align: center; padding: 3rem; color: #64748b;">
+                    <i class="fas fa-newspaper" style="font-size: 3rem; color: #e2e8f0; margin-bottom: 1rem;"></i>
+                    <h3>Em breve teremos novidades!</h3>
+                    <p>Fique ligado para as próximas atualizações.</p>
+                </div>
+            {% endif %}
         </div>
-    </div>
-</section>
+    </section>
 
 <!-- Script para Fade-in ao scroll -->
 <script>
@@ -1478,21 +1543,21 @@ document.addEventListener("DOMContentLoaded", function(){
                 <h2 class="section-title">Vantagens <span class="text-gradient">Exclusivas</span></h2>
             </div>
             <div class="vantagens-grid">
-                <div class="vantagem-card fade-in">
+                <div class="vantagem-card staggered-item">
                     <div class="vantagem-icon">
                         <i class="fas fa-tachometer-alt"></i>
                     </div>
                     <h3>Velocidade Simétrica</h3>
                     <p>Download and upload na mesma velocidade para melhor experiência em chamadas, jogos e transmissões.</p>
                 </div>
-                <div class="vantagem-card fade-in">
+                <div class="vantagem-card staggered-item">
                     <div class="vantagem-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <h3>Conectividade Segura</h3>
                     <p>Proteção avançada contra ameaças virtuais para garantir sua segurança online.</p>
                 </div>
-                <div class="vantagem-card fade-in">
+                <div class="vantagem-card staggered-item">
                     <div class="vantagem-icon">
                         <i class="fas fa-sliders-h"></i>
                     </div>
@@ -1780,7 +1845,7 @@ document.addEventListener("DOMContentLoaded", function(){
         
         // Animação de elementos ao rolar
         function checkFade() {
-            document.querySelectorAll('.fade-in').forEach(element => {
+            document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in, .staggered-item').forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
                 const elementVisible = 150;
                 
@@ -1790,8 +1855,43 @@ document.addEventListener("DOMContentLoaded", function(){
             });
         }
         
-        window.addEventListener('scroll', checkFade);
-        window.addEventListener('load', checkFade);
+        // Animação em sequência para elementos staggered
+        function checkStaggered() {
+            document.querySelectorAll('.staggered-item').forEach((element, index) => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    setTimeout(() => {
+                        element.classList.add('visible');
+                    }, index * 150);
+                }
+            });
+        }
+        
+        // Intersection Observer para melhor performance
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        // Observar elementos com animação
+        document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+        window.addEventListener('scroll', checkStaggered);
+        window.addEventListener('load', checkStaggered);
     </script>
 </body>
+</html>
 </html>
