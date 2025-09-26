@@ -39,10 +39,19 @@ class BusinessLeadAdmin(admin.ModelAdmin):
 
 
 class NoticiaAdmin(admin.ModelAdmin):
-    list_display = ('titulo', 'categoria', 'data_publicacao')  # colunas exibidas na lista
+    list_display = ('titulo', 'categoria', 'data_publicacao', 'imagem_preview')  # colunas exibidas na lista
     prepopulated_fields = {'slug': ('titulo',)}  # gera slug automaticamente
     search_fields = ('titulo', 'resumo', 'conteudo', 'categoria')  # campos pesquisáveis
     list_filter = ('categoria', 'data_publicacao')  # filtros laterais
     date_hierarchy = 'data_publicacao'  # navegação por data
+    readonly_fields = ('data_publicacao', 'imagem_preview')  # campos somente leitura
+    fields = ('titulo', 'slug', 'categoria', 'imagem', 'imagem_preview', 'resumo', 'conteudo', 'data_publicacao')
+    
+    def imagem_preview(self, obj):
+        if obj.imagem:
+            return f'<img src="{obj.imagem.url}" style="max-width: 100px; max-height: 100px; border-radius: 8px;" />'
+        return "Nenhuma imagem"
+    imagem_preview.allow_tags = True
+    imagem_preview.short_description = "Preview da Imagem"
 
 admin.site.register(Noticia, NoticiaAdmin)

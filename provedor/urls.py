@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
+from django.conf.urls.static import static
 
 # Custom admin titles
 admin.site.site_header = getattr(settings, 'ADMIN_SITE_HEADER', 'Admin')
@@ -25,5 +26,9 @@ admin.site.index_title = getattr(settings, 'ADMIN_INDEX_TITLE', 'Painel')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-     path('', include('meu_site.urls')),
+    path('', include('meu_site.urls')),
 ]
+
+# Serve media files in development
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
