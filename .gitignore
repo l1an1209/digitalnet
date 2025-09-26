@@ -128,8 +128,11 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Media files (user uploads)
-media/
+# Media files (user uploads) - keep directory structure
+media/*
+!media/.gitkeep
+!media/noticias/
+!media/noticias/.gitkeep
 
 # Static files (collected)
 staticfiles/

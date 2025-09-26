@@ -17,3 +17,9 @@ mkdir -p media/noticias
 # Set permissions
 chmod 755 media
 chmod 755 media/noticias
+
+# Create a test image if media directory is empty
+if [ ! "$(ls -A media/noticias)" ]; then
+    echo "Creating placeholder for media directory..."
+    touch media/noticias/.gitkeep
+fi

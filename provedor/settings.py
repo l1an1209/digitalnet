@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'meu_site.middleware.MediaFilesMiddleware',  # Middleware para servir arquivos de mídia
 ]
 
 ROOT_URLCONF = 'provedor.urls'
@@ -143,6 +144,11 @@ if not DEBUG:
     # Por enquanto, vamos usar o sistema de arquivos local
     MEDIA_URL = '/media/'
     MEDIA_ROOT = BASE_DIR / 'media'
+    
+    # Configurações adicionais para produção
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    X_FRAME_OPTIONS = 'DENY'
 
 # Admin branding
 from django.utils.translation import gettext_lazy as _
