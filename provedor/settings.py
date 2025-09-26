@@ -135,6 +135,15 @@ FILE_UPLOAD_MAX_MEMORY_SIZE = 5242880  # 5MB
 DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880  # 5MB
 FILE_UPLOAD_PERMISSIONS = 0o644
 
+# Production settings
+if not DEBUG:
+    # Configurações para produção
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    # Para arquivos de mídia em produção, você pode usar serviços como AWS S3
+    # Por enquanto, vamos usar o sistema de arquivos local
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = BASE_DIR / 'media'
+
 # Admin branding
 from django.utils.translation import gettext_lazy as _
 ADMIN_SITE_HEADER = _('DigitalNet — Administração')

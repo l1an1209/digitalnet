@@ -51,7 +51,6 @@ class NoticiaAdmin(admin.ModelAdmin):
         if obj.imagem:
             return f'<img src="{obj.imagem.url}" style="max-width: 100px; max-height: 100px; border-radius: 8px;" />'
         return "Nenhuma imagem"
-    imagem_preview.allow_tags = True
     imagem_preview.short_description = "Preview da Imagem"
 
 admin.site.register(Noticia, NoticiaAdmin)
